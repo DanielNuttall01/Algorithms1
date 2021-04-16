@@ -408,118 +408,180 @@ namespace Algorithms___Assessments_1
                 Networklist.Add(new Networks(filename, integers));
             }
             // Sets values to be used later
-            int x = 1;
             var ChosenFile = Networklist[1];
             int Length;
 
-            // Prints a "menu" of each file name for the user to select
-            Console.WriteLine("Which file would you like to organise:");
-            Console.WriteLine(x + ") Merge files");
-            foreach (Networks network in Networklist)
+            while (true)
             {
-                x++;
-                Console.WriteLine(x + ") " + network.Name);
-            }
-
-            // Makes sure the value is a number
-            if (Int32.TryParse(Console.ReadLine(), out int TempValue))
-            {
-                if (TempValue == 1)
+                int x = 1;
+                // Prints a "menu" of each file name for the user to select
+                Console.WriteLine("Which file would you like to organise:");
+                Console.WriteLine(x + ") Merge files");
+                foreach (Networks network in Networklist)
                 {
-                    Console.WriteLine("\nWhich files would you like to Merge:");
-                    int Count = 0;
-                    foreach (Networks network in Networklist)
+                    x++;
+                    Console.WriteLine(x + ") " + network.Name);
+                }
+
+                // Makes sure the value is a number
+                if (Int32.TryParse(Console.ReadLine(), out int MenuChoice) && MenuChoice <= x && MenuChoice > 0)
+                {
+                    if (MenuChoice == 1)
                     {
-                        Count++;
-                        Console.WriteLine(Count + ") " + network.Name);
-                    }
-                    // Gets the files the user wants to merge
-                    Console.WriteLine("File 1: ");
-                    var TempFile1 = Console.ReadLine();
-                    Console.WriteLine("File 2: ");
-                    var TempFile2 = Console.ReadLine();
-                    int File1 = Int32.Parse(TempFile1);
-                    int File2 = Int32.Parse(TempFile2);
+                        Console.Clear();
+                        while (true)
+                        {
+                            Console.WriteLine("Which files would you like to Merge:");
+                            int Count = 0;
+                            foreach (Networks network in Networklist)
+                            {
+                                Count++;
+                                Console.WriteLine(Count + ") " + network.Name);
+                            }
 
-                    var ChosenFile1 = Networklist[File1 - 1];
-                    int length1 = ChosenFile1.Values.Length;
-                    var ChosenFile2 = Networklist[File2 - 1];
-                    int length2 = ChosenFile2.Values.Length;
-                    //Sorts both into Ascending Order
-                    SortingAlgorithms.QuickSort_Ascending(ChosenFile1.Values, 0, length1 - 1);
-                    SortingAlgorithms.QuickSort_Ascending(ChosenFile2.Values, 0, length2 - 1);
-                    //Performs the merge
-                    int[] MergeData = (int[])SortingAlgorithms.MergeFiles(ChosenFile1.Values, ChosenFile2.Values);
-                    List<int> MergeDataList = new List<int>();
-                    foreach (var item in MergeData)
+                            // Gets the files the user wants to merge
+                            Console.WriteLine("File 1: ");
+                            if (Int32.TryParse(Console.ReadLine(), out int File1) && File1 <= Count && File1 > 0)
+                            {
+                                var ChosenFile1 = Networklist[File1 - 1];
+                                int length1 = ChosenFile1.Values.Length;
+
+                                Console.WriteLine("File 2: ");
+                                if (Int32.TryParse(Console.ReadLine(), out int File2) && File2 <= Count && File2 > 0)
+                                {
+                                    var ChosenFile2 = Networklist[File2 - 1];
+                                    int length2 = ChosenFile2.Values.Length;
+
+                                    //Sorts both into Ascending Order
+                                    SortingAlgorithms.QuickSort_Ascending(ChosenFile1.Values, 0, length1 - 1);
+                                    SortingAlgorithms.QuickSort_Ascending(ChosenFile2.Values, 0, length2 - 1);
+
+                                    //Performs the merge
+                                    int[] MergeData = (int[])SortingAlgorithms.MergeFiles(ChosenFile1.Values, ChosenFile2.Values);
+                                    List<int> MergeDataList = new List<int>();
+
+
+                                    foreach (var item in MergeData)
+                                    {
+                                        MergeDataList.Add(item);
+                                    }
+
+                                    var NewFileName = ChosenFile1.Name + " & " + ChosenFile2.Name;
+                                    Networklist.Add(new Networks(NewFileName.ToString(), MergeDataList));
+
+                                    ChosenFile = Networklist[^1];
+                                    Length = ChosenFile.Values.Length;
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Invalid Option\n");
+                                }
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Invalid Option\n");
+                            }    
+                        }
+                    }
+                    else
                     {
-                        MergeDataList.Add(item);
+                        ChosenFile = Networklist[MenuChoice - 2];
+                        Length = ChosenFile.Values.Length;
                     }
-                    
-                    var NewFileName = ChosenFile1.Name + " & " + ChosenFile2.Name;
-                    Networklist.Add(new Networks(NewFileName.ToString(), MergeDataList));
 
-                    ChosenFile = Networklist[^1];
-                    Length = ChosenFile.Values.Length;
+                    Console.Clear();
+                    bool valid = false;
+                    //Loops menu
+                    while (valid != true)
+                    {
+                        Console.WriteLine("Would you like to view the file(s) " + ChosenFile.Name + " values in:" +
+                        "\n1) Ascending Order" +
+                        "\n2) Decending Order" +
+                        "\n3) Find a specific Value");
 
+                        if (Int32.TryParse(Console.ReadLine(), out int Action))
+                        {
+                            switch (Action)
+                            {
+                                // Sorts in Ascending Order
+                                case 1:
+                                    Console.WriteLine("\nAscending order: ");
+                                    // If length 2048 values or more Merge Sorts
+                                    if (Length >= 2048)
+                                    {
+                                        SortingAlgorithms.MergeSort_Ascending(ChosenFile.Values, 0, Length - 1);
+                                    }
+                                    // If smaller quick sorts
+                                    else
+                                    {
+                                        SortingAlgorithms.QuickSort_Ascending(ChosenFile.Values, 0, Length - 1);
+                                    }
+                                    ChosenFile.ReturnValues();
+                                    valid = true;
+                                    break;
+
+                                // Sorts in Descending Order
+                                case 2:
+                                    Console.WriteLine("\nDescending order: ");
+                                    // If length 2048 values or more Merge Sorts
+                                    if (Length >= 2048)
+                                    {
+                                        SortingAlgorithms.MergeSort_Descending(ChosenFile.Values, 0, Length - 1);
+                                    }
+                                    // If smaller quick sorts
+                                    else
+                                    {
+                                        SortingAlgorithms.QuickSort_Descending(ChosenFile.Values, 0, Length - 1);
+                                    }
+                                    ChosenFile.ReturnValues();
+                                    valid = true;
+                                    break;
+
+                                // Case 3 Search for value
+                                case 3:
+                                    Console.Clear();
+                                    while (true)
+                                    {
+                                        Console.WriteLine("Please enter the value you'd like to find in file " + ChosenFile.Name + ":");
+                                        if (Int32.TryParse(Console.ReadLine(), out int tempKey))
+                                        {
+                                            SearchingAlgorithms.Linear_Search(ChosenFile.Values, tempKey);
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Invalid Option\n");
+                                        }
+                                    }
+                                    valid = true;
+                                    break;
+
+                                // default if case is not selected
+                                default:
+                                    Console.Clear();
+                                    Console.WriteLine("Invalid option\n");
+                                    break;
+
+                            }
+                        }
+                        // Catches non integer input
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Invalid option\n");
+                        }
+                    }
+                    // Ends while loop
+                    break;
                 }
                 else
                 {
-                    ChosenFile = Networklist[TempValue - 2];
-                    Length = ChosenFile.Values.Length;
-                }
-
-                Console.WriteLine("\nWould you like to view the file(s) " + ChosenFile.Name + " values in:" +
-                "\n1) Ascending Order" +
-                "\n2) Decending Order" +
-                "\n3) Find a specific Value");
-
-                if (Int32.TryParse(Console.ReadLine(), out int Action))
-                {
-                    switch (Action)
-                    {
-                        // Sorts in Ascending Order
-                        case 1:
-                            Console.WriteLine("\nAscending order: ");
-                            // If length 2048 values or more Merge Sorts
-                            if (Length >= 2048)
-                            {
-                                SortingAlgorithms.MergeSort_Ascending(ChosenFile.Values, 0, Length - 1);
-                            }
-                            // If smaller quick sorts
-                            else
-                            {
-                                SortingAlgorithms.QuickSort_Ascending(ChosenFile.Values, 0, Length - 1);
-                            }
-                            ChosenFile.ReturnValues();
-                            break;
-                        
-                        // Sorts in Descending Order
-                        case 2:
-                            Console.WriteLine("\nDescending order: ");
-                            // If length 2048 values or more Merge Sorts
-                            if (Length >= 2048)
-                            {
-                                SortingAlgorithms.MergeSort_Descending(ChosenFile.Values, 0, Length - 1);
-                            }
-                            // If smaller quick sorts
-                            else
-                            {
-                                SortingAlgorithms.QuickSort_Descending(ChosenFile.Values, 0, Length - 1);
-                            }
-                            ChosenFile.ReturnValues();
-                            break;
-                        
-                        // Case 3 Search for value
-                        case 3:
-                            Console.WriteLine("\nPlease enter the value you'd like to find: ");
-                            if (Int32.TryParse(Console.ReadLine(), out int tempKey))
-                            {
-                                SearchingAlgorithms.Linear_Search(ChosenFile.Values, tempKey);
-                            }
-
-                            break;
-                    }
+                    Console.Clear();
+                    Console.WriteLine("Invalid option\n");
                 }
             }
         }
