@@ -1,0 +1,13 @@
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.AssemblyInfoInputs.cache
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.AssemblyInfo.cs
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\bin\Debug\netcoreapp3.1\Algorithms - Assessments 1.exe
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\bin\Debug\netcoreapp3.1\Algorithms - Assessments 1.deps.json
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\bin\Debug\netcoreapp3.1\Algorithms - Assessments 1.runtimeconfig.json
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\bin\Debug\netcoreapp3.1\Algorithms - Assessments 1.runtimeconfig.dev.json
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\bin\Debug\netcoreapp3.1\Algorithms - Assessments 1.dll
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\bin\Debug\netcoreapp3.1\Algorithms - Assessments 1.pdb
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.dll
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.pdb
+C:\Users\Daniel\Desktop\UoL\Year 1\Semester 2\Assessments\Algorithms\Assessment 1\Algorithms - Assessments 1\obj\Debug\netcoreapp3.1\Algorithms - Assessments 1.genruntimeconfig.cache
