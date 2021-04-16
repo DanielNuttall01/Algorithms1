@@ -287,7 +287,7 @@ namespace Algorithms___Assessments_1
             if (Positions.Count > 0)
             {
                 // Writes each found position to the console
-                Console.WriteLine("\n" + Key + " Found at position(s): ");
+                Console.WriteLine("\n{0} Found at position(s): ", Key);
                 foreach (var Entry in Positions)
                 {
                     Console.Write(Entry + ", ");
@@ -297,7 +297,7 @@ namespace Algorithms___Assessments_1
             // If key not found looks for next closest values
             else
             {
-                Console.WriteLine("\nFailed to find value " + Key + ". Searching for next closest value(s)");
+                Console.WriteLine("\nFailed to find value {0}. Searching for next closest value(s).", Key);
                 // Sorts in ascending order
                 SortingAlgorithms.QuickSort_Ascending(Data, 0, Data.Length - 1);
                 // Calls binary search to find position data
@@ -413,30 +413,30 @@ namespace Algorithms___Assessments_1
 
             while (true)
             {
-                int x = 1;
+                int Count = 1;
                 // Prints a "menu" of each file name for the user to select
                 Console.WriteLine("Which file would you like to organise:");
-                Console.WriteLine(x + ") Merge files");
+                Console.WriteLine("{0}) Merge files", Count);
                 foreach (Networks network in Networklist)
                 {
-                    x++;
-                    Console.WriteLine(x + ") " + network.Name);
+                    Count++;
+                    Console.WriteLine("{0}) {1}", Count, network.Name);
                 }
 
                 // Makes sure the value is a number
-                if (Int32.TryParse(Console.ReadLine(), out int MenuChoice) && MenuChoice <= x && MenuChoice > 0)
+                if (Int32.TryParse(Console.ReadLine(), out int MenuChoice) && MenuChoice <= Count && MenuChoice > 0)
                 {
                     if (MenuChoice == 1)
                     {
                         Console.Clear();
                         while (true)
                         {
+                            Count = 0;
                             Console.WriteLine("Which files would you like to Merge:");
-                            int Count = 0;
                             foreach (Networks network in Networklist)
                             {
                                 Count++;
-                                Console.WriteLine(Count + ") " + network.Name);
+                                Console.WriteLine("{0}) {1}", Count, network.Name);
                             }
 
                             // Gets the files the user wants to merge
@@ -497,10 +497,7 @@ namespace Algorithms___Assessments_1
                     //Loops menu
                     while (valid != true)
                     {
-                        Console.WriteLine("Would you like to view the file(s) " + ChosenFile.Name + " values in:" +
-                        "\n1) Ascending Order" +
-                        "\n2) Decending Order" +
-                        "\n3) Find a specific Value");
+                        Console.WriteLine("Would you like to view the file(s) {0} values in: \n1) Ascending Order \n2) Decending Order \n3) Find a specific Value", ChosenFile.Name);
 
                         if (Int32.TryParse(Console.ReadLine(), out int Action))
                         {
@@ -545,7 +542,7 @@ namespace Algorithms___Assessments_1
                                     Console.Clear();
                                     while (true)
                                     {
-                                        Console.WriteLine("Please enter the value you'd like to find in file " + ChosenFile.Name + ":");
+                                        Console.WriteLine("Please enter the value you'd like to find in file {0} :", ChosenFile.Name);
                                         if (Int32.TryParse(Console.ReadLine(), out int tempKey))
                                         {
                                             SearchingAlgorithms.Linear_Search(ChosenFile.Values, tempKey);
