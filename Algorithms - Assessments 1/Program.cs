@@ -10,12 +10,15 @@ namespace Algorithms___Assessments_1
         // Stores file name and values
         public string Name { get; }
         public int[] Values { get; set; }
+        public int[] OriginalOrder { get; }
+
 
         // Constructor creates instances of the Class
         public Networks(string FileName, List<int> ValueList)
         {
             Name = FileName;
             Values = ValueList.ToArray();
+            OriginalOrder = ValueList.ToArray();
         }
         // Function used to write the values to the console
         public void ReturnValues()
@@ -267,7 +270,7 @@ namespace Algorithms___Assessments_1
     class SearchingAlgorithms
     {
         // Linear Search
-        static public object Linear_Search(int[] Data, int Key)
+        static public object Linear_Search(int[] Data, int Key, int[]OriginalOrder)
         {
             // Sets starting Values
             int max = Data.Length - 1;
@@ -304,7 +307,7 @@ namespace Algorithms___Assessments_1
                 int[] newkeys = (int[])Binary_Search(Data, Key); //Converts to string and split
                 foreach (var newkey in newkeys)
                 {
-                    Linear_Search(Data, newkey);
+                    Linear_Search(OriginalOrder, newkey, OriginalOrder);
                 }
 
             }
@@ -545,7 +548,7 @@ namespace Algorithms___Assessments_1
                                         Console.WriteLine("Please enter the value you'd like to find in file {0} :", ChosenFile.Name);
                                         if (Int32.TryParse(Console.ReadLine(), out int tempKey))
                                         {
-                                            SearchingAlgorithms.Linear_Search(ChosenFile.Values, tempKey);
+                                            SearchingAlgorithms.Linear_Search(ChosenFile.Values, tempKey, ChosenFile.OriginalOrder);
                                             break;
                                         }
                                         else
